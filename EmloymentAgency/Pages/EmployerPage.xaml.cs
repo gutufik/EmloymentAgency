@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Core;
 
 namespace EmloymentAgency.Pages
 {
@@ -20,9 +21,20 @@ namespace EmloymentAgency.Pages
     /// </summary>
     public partial class EmployerPage : Page
     {
-        public EmployerPage()
+        public List<ActivityType> ActivityTypes { get; set; }
+        public Employer Employer { get; set; }
+        public EmployerPage(Employer employer)
         {
             InitializeComponent();
+            ActivityTypes = DataAccess.GetActivityTypes();
+            Employer = employer;
+            DataContext = this;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            DataAccess.SaveEmployer(Employer);
+            NavigationService.GoBack();
         }
     }
 }

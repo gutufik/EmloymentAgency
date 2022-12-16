@@ -42,5 +42,10 @@ namespace EmloymentAgency
         {
             mainFrame.NavigationService.Navigate(new ApplicantsPage());
         }
+
+        private void btnDeals_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.NavigationService.Navigate(new DealsPage());
+        }
     }
 }

@@ -29,5 +29,6 @@ namespace Core
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Deal> Deals { get; set; }
         public virtual Employer Employer { get; set; }
+        public virtual Qualification Qualification { get; set; }
     }
 }

@@ -9,6 +9,37 @@
       Title="VacancyPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Название"/>
+        <TextBox x:Name="tbName" Grid.Column="1" Text="{Binding Vacancy.Name}"/>
+        <TextBlock Text="Работодатель" Grid.Row="1"/>
+        <ComboBox x:Name="cbEmployer" ItemsSource="{Binding Employers}" 
+                  SelectedItem="{Binding Vacancy.Employer}" 
+                  DisplayMemberPath="Name"
+                  Grid.Row="1" Grid.Column="1"/>
+        <TextBlock Text="Квалификация" Grid.Row="2"/>
+        <ComboBox x:Name="cbQualification" ItemsSource="{Binding Qualifications}" 
+                  SelectedItem="{Binding Vacancy.Qualification}" 
+                  DisplayMemberPath="Name"
+                  Grid.Row="2" Grid.Column="1"/>
+        <TextBlock Text="Описание" Grid.Row="3"/>
+        <TextBox x:Name="tbDescription" AcceptsReturn="True" 
+                 Text="{Binding Vacancy.Description}"
+                 Grid.Row="3" Grid.Column="1"/>
+
+        <Button x:Name="btnSave" Content="Сохранить" 
+                Grid.Row="4" Grid.Column="1" Click="btnSave_Click"/>
+
     </Grid>
 </Page>

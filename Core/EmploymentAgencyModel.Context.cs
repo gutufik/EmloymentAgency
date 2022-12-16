@@ -31,6 +31,7 @@ namespace Core
         public virtual DbSet<Deal> Deals { get; set; }
         public virtual DbSet<Employer> Employers { get; set; }
         public virtual DbSet<Qualification> Qualifications { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Vacancy> Vacancies { get; set; }
     }
 }

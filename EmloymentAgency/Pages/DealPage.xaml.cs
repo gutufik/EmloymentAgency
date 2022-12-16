@@ -12,26 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Core;
 
 namespace EmloymentAgency.Pages
 {
     /// <summary>
-    /// Interaction logic for ApplicantsPage.xaml
+    /// Interaction logic for DealPage.xaml
     /// </summary>
-    public partial class ApplicantsPage : Page
+    public partial class DealPage : Page
     {
-        public List<Applicant> Applicants { get; set; }
-        public ApplicantsPage()
+        public DealPage()
         {
             InitializeComponent();
-            Applicants = DataAccess.GetApplicants();
-            DataContext = this;
-        }
-
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

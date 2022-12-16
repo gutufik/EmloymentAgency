@@ -18,6 +18,7 @@ namespace Core
         public Qualification()
         {
             this.Applicants = new HashSet<Applicant>();
+            this.Vacancies = new HashSet<Vacancy>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace Core
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Applicant> Applicants { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vacancy> Vacancies { get; set; }
     }
 }

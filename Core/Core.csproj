@@ -51,46 +51,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityType.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
+      <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Agent.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmloymentAgencyEntities.cs" />
-    <Compile Include="AgencyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AgencyModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AgencyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AgencyModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AgencyModel.edmx</DependentUpon>
+      <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Applicant.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
+      <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess.cs" />
     <Compile Include="Deal.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
+      <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Emloyer.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
+    <Compile Include="Employer.cs">
+      <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmploymentAgencyEntities.cs" />
+    <Compile Include="DataAccess.cs" />
+    <Compile Include="EmploymentAgencyModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmploymentAgencyModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmploymentAgencyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmploymentAgencyModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmploymentAgencyModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Qualification.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
+      <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
+      <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Vacancy.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
+      <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -123,32 +123,30 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="AgencyModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AgencyModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="AgencyModel.edmx.diagram">
-      <DependentUpon>AgencyModel.edmx</DependentUpon>
-    </None>
     <None Include="App.Config" />
+    <EntityDeploy Include="EmploymentAgencyModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EmploymentAgencyModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EmploymentAgencyModel.edmx.diagram">
+      <DependentUpon>EmploymentAgencyModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AgencyModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AgencyModel.Context.cs</LastGenOutput>
-      <DependentUpon>AgencyModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="AgencyModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AgencyModel.edmx</DependentUpon>
-      <LastGenOutput>AgencyModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="EmploymentAgencyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmploymentAgencyModel.edmx</DependentUpon>
+      <LastGenOutput>EmploymentAgencyModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EmploymentAgencyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmploymentAgencyModel.edmx</DependentUpon>
+      <LastGenOutput>EmploymentAgencyModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

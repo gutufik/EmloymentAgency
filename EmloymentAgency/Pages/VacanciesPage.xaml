@@ -13,16 +13,29 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged"/>
-            <ComboBox x:Name="cbEmployer" ItemsSource="{Binding Employers}" SelectedIndex="0"/>
-            <ComboBox x:Name="cbActivityType" ItemsSource="{Binding ActivityTypes}" SelectedIndex="0"/>
-        </StackPanel>
-        <ListView Grid.Row="1">
+        <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged"/>
+        <ComboBox x:Name="cbEmployer" ItemsSource="{Binding Employers}" 
+                  SelectedIndex="0" Grid.Column="1" SelectionChanged="cbEmployer_SelectionChanged"
+                  DisplayMemberPath="Name"/>
+        <ComboBox x:Name="cbActivityType" ItemsSource="{Binding ActivityTypes}" 
+                  SelectedIndex="0" Grid.Column="2" SelectionChanged="cbActivityType_SelectionChanged"
+                  DisplayMemberPath="Name"/>
+        <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click" Grid.Column="3"/>
+
+        <ListView x:Name="lvVacancies" ItemsSource="{Binding Vacancies}" 
+                  SelectionChanged="lvVacancies_SelectionChanged"
+                  Grid.Row="1" Grid.ColumnSpan="4">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Employer.Name}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}"/>
                 </GridView>
             </ListView.View>
         </ListView>

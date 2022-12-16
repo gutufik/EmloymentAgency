@@ -9,6 +9,21 @@
       Title="ApplicantsPage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"/>
         
+        <ListView x:Name="lvApplicants" ItemsSource="{Binding Applicants}" 
+                  Grid.Row="1" Grid.ColumnSpan="3">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Patronymic}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>
