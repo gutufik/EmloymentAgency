@@ -37,6 +37,7 @@
         <ComboBox x:Name="cbActivityType" 
                   ItemsSource="{Binding ActivityTypes}"
                   SelectedItem="{Binding Employer.ActivityType}"
+                  DisplayMemberPath="Name"
                   Grid.Column="1" Grid.Row="3"/>
         
         <Button x:Name="btnSave" 
