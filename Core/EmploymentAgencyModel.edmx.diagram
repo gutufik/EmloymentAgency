@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="218dbbf18ab64343995bac534fe384aa" Name="Diagram1">
+        <EntityTypeShape EntityType="EmploymentAgencyModel.ActivityType" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploymentAgencyModel.Agent" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploymentAgencyModel.Applicant" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploymentAgencyModel.Deal" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploymentAgencyModel.Employer" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploymentAgencyModel.Qualification" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploymentAgencyModel.Vacancy" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="EmploymentAgencyModel.FK_Emloyer_ActivityType" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploymentAgencyModel.FK_Deal_Angent" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploymentAgencyModel.FK_Applicant_Qualification" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploymentAgencyModel.FK_Deal_Applicant" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploymentAgencyModel.FK_Deal_Vacancy" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploymentAgencyModel.FK_Vacancy_Emloyer" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

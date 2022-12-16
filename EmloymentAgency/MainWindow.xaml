@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnVacancies" Content="Вакансии" Click="btnVacancies_Click"/>
+            <Button x:Name="btnEmployers" Content="Работодатели" Click="btnEmployers_Click"/>
+            <Button x:Name="btnApplicants" Content="Соискатели" Click="btnApplicants_Click"/>
+        </StackPanel>
+
+        <Frame Grid.Row="1" x:Name="mainFrame"/>
+
     </Grid>
 </Window>
