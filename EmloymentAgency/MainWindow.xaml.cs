@@ -25,7 +25,12 @@ namespace EmloymentAgency
         {
             InitializeComponent();
             mainFrame.NavigationService.Navigate(new VacanciesPage());
+            mainFrame.Navigated += MainFrame_Navigated;
+        }
 
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            tbPageTitle.Text = (mainFrame.Content as Page).Title;
         }
 
         private void btnVacancies_Click(object sender, RoutedEventArgs e)

@@ -6,9 +6,82 @@
       xmlns:local="clr-namespace:EmloymentAgency.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DealPage">
+      Title="Сделка">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Соискатель"/>
+        <TextBlock Text="Вакансия" Grid.Row="1"/>
+        <TextBlock Text="Работодатель" Grid.Row="2"/>
+        <TextBlock Text="Агент" Grid.Row="3"/>
+        <TextBlock Text="Дата заключения" Grid.Row="4"/>
+        <TextBlock Text="Дата оплаты" Grid.Row="5"/>
+        <TextBlock Text="Комиссия" Grid.Row="6"/>
+
+        <ComboBox x:Name="cbApplicant" 
+                  ItemsSource="{Binding Applicants}"
+                  SelectedItem="{Binding Deal.Applicant}"
+                  DisplayMemberPath="Name"
+                  Grid.Column="1"/>
+        <ComboBox x:Name="cbVacancy" 
+                  ItemsSource="{Binding Vacancies}"
+                  SelectedItem="{Binding Deal.Vacancy}"
+                  
+                  Grid.Column="1" Grid.Row="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding Employer.Name}"/>
+                        <Run Text="-"/>
+                        <Run Text="{Binding Name}" FontWeight="Bold"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="cbEmployer" 
+                  ItemsSource="{Binding Employers}"
+                  DisplayMemberPath="Name"
+                  Grid.Column="1" Grid.Row="2"/>
         
+        <ComboBox x:Name="cbAgent"
+                  ItemsSource="{Binding Agents}"
+                  SelectedItem="{Binding Deal.Agent}"
+                  Grid.Column="1" Grid.Row="3"/>
+
+        <DatePicker x:Name="dpCompilationDate"
+                    Language="ru"
+                    Grid.Column="1" Grid.Row="4"/>
+        <DatePicker x:Name="dpPaymentDate"
+                    Language="ru"
+                    Grid.Column="1" Grid.Row="5"/>
+        <TextBox x:Name="tbComission"
+                 Text="{Binding Deal.Comission}"
+                 Grid.Column="1" Grid.Row="6"/>
+
+        <Button x:Name="btnPrint" 
+                Content="Печать"
+                Click="btnPrint_Click"
+                Grid.Column="0" Grid.Row="7"/>
+
+        <Button x:Name="btnSave" 
+                Content="Сохранить"
+                Click="btnSave_Click"
+                Grid.Column="1" Grid.Row="7"/>
+
     </Grid>
 </Page>

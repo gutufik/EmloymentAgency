@@ -82,6 +82,7 @@
           <Property Name="QualificationId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Closed" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Applicant_Qualification">
           <End Role="Qualification" Type="Self.Qualification" Multiplicity="1" />
@@ -335,6 +336,7 @@
           <Property Name="QualificationId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Closed" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Deals" Relationship="EmploymentAgencyModel.FK_Deal_Vacancy" FromRole="Vacancy" ToRole="Deal" />
           <NavigationProperty Name="Employer" Relationship="EmploymentAgencyModel.FK_Vacancy_Emloyer" FromRole="Vacancy" ToRole="Employer" />
           <NavigationProperty Name="Qualification" Relationship="EmploymentAgencyModel.FK_Vacancy_Qualification" FromRole="Vacancy" ToRole="Qualification" />
@@ -423,7 +425,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -507,6 +509,7 @@
           <EntitySetMapping Name="Vacancies">
             <EntityTypeMapping TypeName="EmploymentAgencyModel.Vacancy">
               <MappingFragment StoreEntitySet="Vacancy">
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />

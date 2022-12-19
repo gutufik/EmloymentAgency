@@ -17,6 +17,7 @@
             <Button x:Name="btnEmployers" Content="Работодатели" Click="btnEmployers_Click"/>
             <Button x:Name="btnApplicants" Content="Соискатели" Click="btnApplicants_Click"/>
             <Button x:Name="btnDeals" Content="Сделки" Click="btnDeals_Click"/>
+            <TextBlock x:Name="tbPageTitle"/>
         </StackPanel>
 
         <Frame Grid.Row="1" x:Name="mainFrame" NavigationUIVisibility="Hidden"/>

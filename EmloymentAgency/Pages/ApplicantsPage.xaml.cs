@@ -31,7 +31,7 @@ namespace EmloymentAgency.Pages
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new ApplicantPage(new Applicant()));
         }
     }
 }

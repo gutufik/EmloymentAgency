@@ -6,9 +6,52 @@
       xmlns:local="clr-namespace:EmloymentAgency.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ApplicantPage">
+      Title="Соискатель">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Фамилия"/>
+        <TextBox x:Name="tbLastName" 
+                 Text="{Binding Applicant.LastName}" 
+                 Grid.Column="1"/>
+        <TextBlock Text="Имя" Grid.Row="1"/>
+        <TextBox x:Name="tbFirstName" 
+                 Text="{Binding Applicant.FirstName}" 
+                 Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Text="Отчество" Grid.Row="2"/>
+        <TextBox x:Name="tbPatronymic" 
+                 Text="{Binding Applicant.Patronymic}" 
+                 Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Text="Квалификация" Grid.Row="3"/>
+        <ComboBox x:Name="cbQualification" 
+                  ItemsSource="{Binding Qualifications}"
+                  SelectedItem="{Binding Applicant.Qualification}"
+                  DisplayMemberPath="Name"
+                  Grid.Column="1" Grid.Row="3"/>
+        <TextBlock Text="Подробнее" Grid.Row="4"/>
+        <TextBox x:Name="tbInfo" 
+                 Text="{Binding Applicant.OtherInfo}"
+                 AcceptsReturn="True"
+                 Grid.Column="1" Grid.Row="4"/>
+
+        <Button x:Name="btnSave" 
+                Content="Сохранить"
+                Click="btnSave_Click"
+                Grid.Column="1" Grid.Row="5"/>
+
+
     </Grid>
 </Page>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Core;
 
 namespace EmloymentAgency.Pages
 {
@@ -20,9 +21,19 @@ namespace EmloymentAgency.Pages
     /// </summary>
     public partial class ApplicantPage : Page
     {
-        public ApplicantPage()
+        public Applicant Applicant { get; set; }
+        public List<Qualification> Qualifications { get; set; }
+        public ApplicantPage(Applicant applicant)
         {
             InitializeComponent();
+            Applicant = applicant;
+            Qualifications = DataAccess.GetQualifications();
+            DataContext = this;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
