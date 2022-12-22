@@ -33,7 +33,8 @@ namespace EmloymentAgency.Pages
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            DataAccess.SaveApplicant(Applicant);
+            NavigationService.GoBack();
         }
     }
 }

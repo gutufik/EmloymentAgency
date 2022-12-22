@@ -8,6 +8,9 @@ namespace Core
 {
     public static class DataAccess
     {
+        public delegate void RefreshListsDelegate();
+        public static event RefreshListsDelegate RefreshListsEvent;
+
         public static List<Employer> GetEmployers() => EmploymentAgencyEntities.GetContext().Employers.ToList();
         public static List<ActivityType> GetActivityTypes() => EmploymentAgencyEntities.GetContext().ActivityTypes.ToList();
         public static List<Vacancy> GetVacancies() => EmploymentAgencyEntities.GetContext().Vacancies.ToList();

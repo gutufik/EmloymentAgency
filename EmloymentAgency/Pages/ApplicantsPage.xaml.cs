@@ -26,6 +26,7 @@ namespace EmloymentAgency.Pages
         {
             InitializeComponent();
             Applicants = DataAccess.GetApplicants();
+            DataAccess.
             DataContext = this;
         }
 
