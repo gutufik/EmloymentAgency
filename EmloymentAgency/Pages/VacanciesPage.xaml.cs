@@ -38,8 +38,16 @@ namespace EmloymentAgency.Pages
             Employers = DataAccess.GetEmployers();
             Employers.Insert(0, new Employer() { Name = "Все" });
 
+            DataAccess.RefreshListsEvent += DataAccess_RefreshListsEvent;
 
             DataContext = this;
+        }
+
+        private void DataAccess_RefreshListsEvent()
+        {
+            Vacancies = DataAccess.GetVacancies();
+            lvVacancies.ItemsSource = Vacancies;
+            lvVacancies.Items.Refresh();
         }
 
         private void ApplyFilters()

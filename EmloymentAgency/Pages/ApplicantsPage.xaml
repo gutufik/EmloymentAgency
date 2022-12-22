@@ -16,6 +16,7 @@
         <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"/>
         
         <ListView x:Name="lvApplicants" ItemsSource="{Binding Applicants}" 
+                  SelectionChanged="lvApplicants_SelectionChanged"
                   Grid.Row="1" Grid.ColumnSpan="3">
             <ListView.View>
                 <GridView>

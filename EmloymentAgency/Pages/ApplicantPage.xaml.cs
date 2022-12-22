@@ -28,6 +28,12 @@ namespace EmloymentAgency.Pages
             InitializeComponent();
             Applicant = applicant;
             Qualifications = DataAccess.GetQualifications();
+
+            if (applicant.Id == 0)
+                Title = "Новый соискатель";
+            else
+                Title =  $"Соискатель №{applicant.Id}";
+
             DataContext = this;
         }
 

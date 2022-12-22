@@ -36,8 +36,16 @@
         <ComboBox x:Name="cbApplicant" 
                   ItemsSource="{Binding Applicants}"
                   SelectedItem="{Binding Deal.Applicant}"
-                  DisplayMemberPath="Name"
-                  Grid.Column="1"/>
+                  Grid.Column="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding LastName}"/>
+                        <Run Text="{Binding FirstName}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <ComboBox x:Name="cbVacancy" 
                   ItemsSource="{Binding Vacancies}"
                   SelectedItem="{Binding Deal.Vacancy}"
@@ -57,17 +65,28 @@
                   ItemsSource="{Binding Employers}"
                   DisplayMemberPath="Name"
                   Grid.Column="1" Grid.Row="2"/>
-        
+
         <ComboBox x:Name="cbAgent"
                   ItemsSource="{Binding Agents}"
                   SelectedItem="{Binding Deal.Agent}"
-                  Grid.Column="1" Grid.Row="3"/>
+                  Grid.Column="1" Grid.Row="3">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding LastName}"/>
+                        <Run Text="{Binding FirstName}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <DatePicker x:Name="dpCompilationDate"
                     Language="ru"
+                    SelectedDate="{Binding Deal.CompilationDate}"
                     Grid.Column="1" Grid.Row="4"/>
         <DatePicker x:Name="dpPaymentDate"
                     Language="ru"
+                    SelectedDate="{Binding Deal.PaymentDate}"
                     Grid.Column="1" Grid.Row="5"/>
         <TextBox x:Name="tbComission"
                  Text="{Binding Deal.Comission}"

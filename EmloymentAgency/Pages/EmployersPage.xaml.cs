@@ -26,7 +26,15 @@ namespace EmloymentAgency.Pages
         {
             InitializeComponent();
             Employers = DataAccess.GetEmployers();
+            DataAccess.RefreshListsEvent += DataAccess_RefreshListsEvent;
             DataContext = this;
+        }
+
+        private void DataAccess_RefreshListsEvent()
+        {
+            Employers = DataAccess.GetEmployers();
+            lvEmployers.ItemsSource = Employers;
+            lvEmployers.Items.Refresh();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

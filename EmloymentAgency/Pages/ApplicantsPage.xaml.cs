@@ -26,13 +26,27 @@ namespace EmloymentAgency.Pages
         {
             InitializeComponent();
             Applicants = DataAccess.GetApplicants();
-            DataAccess.
+            DataAccess.RefreshListsEvent += DataAccess_RefreshListsEvent;
             DataContext = this;
+        }
+
+        private void DataAccess_RefreshListsEvent()
+        {
+            Applicants = DataAccess.GetApplicants();
+            lvApplicants.ItemsSource = Applicants;
+            lvApplicants.Items.Refresh();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ApplicantPage(new Applicant()));
+        }
+
+        private void lvApplicants_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var applicant = (Applicant)lvApplicants.SelectedItem;
+            if (applicant != null)
+                NavigationService.Navigate(new ApplicantPage(applicant));
         }
     }
 }

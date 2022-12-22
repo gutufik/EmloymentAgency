@@ -21,14 +21,32 @@ namespace EmloymentAgency.Pages
     /// </summary>
     public partial class DealsPage : Page
     {
+        public List<Deal> Deals { get; set; }
         public DealsPage()
         {
             InitializeComponent();
+            Deals = DataAccess.GetDeals();
+            DataAccess.RefreshListsEvent += DataAccess_RefreshListsEvent;
+            DataContext = this;
+        }
+
+        private void DataAccess_RefreshListsEvent()
+        {
+            Deals = DataAccess.GetDeals();
+            lvDeals.ItemsSource = Deals;
+            lvDeals.Items.Refresh();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new DealPage(new Deal()));
+        }
+
+        private void lvDeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var deal = (Deal)lvDeals.SelectedItem;
+            if (deal != null) 
+                NavigationService.Navigate(new DealPage(deal));
         }
     }
 }

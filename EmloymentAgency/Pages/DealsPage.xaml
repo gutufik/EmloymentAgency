@@ -15,13 +15,35 @@
         </Grid.RowDefinitions>
         <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"/>
 
-        <ListView x:Name="lvApplicants" ItemsSource="{Binding Applicants}" 
+        <ListView x:Name="lvDeals" ItemsSource="{Binding Deals}" 
+                  SelectionChanged="lvDeals_SelectionChanged"
                   Grid.Row="1" Grid.ColumnSpan="3">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding LastName}"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding FirstName}"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Patronymic}"/>
+                    <GridViewColumn Header="Соискатель">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Run Text="{Binding Applicant.LastName}"/>
+                                    <Run Text="{Binding Applicant.FirstName}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Работодатель">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Run Text="{Binding Vacancy.Employer.Name}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Дата заключения" 
+                                    DisplayMemberBinding="{Binding CompilationDate, StringFormat=dd.MM.yyyy}"/>
+                    <GridViewColumn Header="Дата оплаты" 
+                                    DisplayMemberBinding="{Binding PaymentDate, StringFormat=dd.MM.yyyy}"/>
+                    
                 </GridView>
             </ListView.View>
         </ListView>

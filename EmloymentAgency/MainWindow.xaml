@@ -5,22 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EmloymentAgency"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Height="450" Width="800"
+        Title="MainWindow" MinHeight="450" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80px"/>
+            <RowDefinition Height="40px"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            
             <Button x:Name="btnVacancies" Content="Вакансии" Click="btnVacancies_Click"/>
             <Button x:Name="btnEmployers" Content="Работодатели" Click="btnEmployers_Click"/>
             <Button x:Name="btnApplicants" Content="Соискатели" Click="btnApplicants_Click"/>
             <Button x:Name="btnDeals" Content="Сделки" Click="btnDeals_Click"/>
-            <TextBlock x:Name="tbPageTitle"/>
         </StackPanel>
+        <TextBlock x:Name="tbPageTitle" FontSize="30" 
+                   HorizontalAlignment="Center"
+                   Grid.Row="1"/>
 
-        <Frame Grid.Row="1" x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Row="2" x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
 
     </Grid>
 </Window>

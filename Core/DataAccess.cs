@@ -24,24 +24,28 @@ namespace Core
             if (employer.Id == 0)
                 EmploymentAgencyEntities.GetContext().Employers.Add(employer);
             EmploymentAgencyEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
         }
         public static void SaveApplicant(Applicant applicant)
         {
             if (applicant.Id == 0)
                 EmploymentAgencyEntities.GetContext().Applicants.Add(applicant);
             EmploymentAgencyEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
         }
         public static void SaveVacancy(Vacancy vacancy)
         {
             if (vacancy.Id == 0)
                 EmploymentAgencyEntities.GetContext().Vacancies.Add(vacancy);
             EmploymentAgencyEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
         }
         public static void SaveDeal(Deal deal)
         {
             if (deal.Id == 0)
                 EmploymentAgencyEntities.GetContext().Deals.Add(deal);
             EmploymentAgencyEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
         }
     }
 }
