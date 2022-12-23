@@ -29,9 +29,9 @@ namespace EmloymentAgency.Pages
             ActivityTypes = DataAccess.GetActivityTypes();
             Employer = employer;
             if (Employer.Id == 0)
-                Title = "НовЫй раболтодатель";
+                Title = "Новый работодатель";
             else
-                Title = $"Работодатель №{Employer.Name}";
+                Title = $"Работодатель {Employer.Name}";
 
             DataContext = this;
         }
@@ -40,6 +40,15 @@ namespace EmloymentAgency.Pages
         {
             DataAccess.SaveEmployer(Employer);
             NavigationService.GoBack();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Выбранный работодатель будет удален. Продолжить?", "Предупреждение", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
+            {
+                DataAccess.DeleteEmployer(Employer);
+                NavigationService.GoBack();
+            }
         }
     }
 }

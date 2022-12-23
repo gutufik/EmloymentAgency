@@ -7,6 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Работодатель">
+    <Page.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignBody1TextBlock}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="20"/>
+
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -14,11 +21,11 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Название"/>
@@ -39,9 +46,16 @@
                   SelectedItem="{Binding Employer.ActivityType}"
                   DisplayMemberPath="Name"
                   Grid.Column="1" Grid.Row="3"/>
-        
+
+        <Button x:Name="btnDelete"
+                Content="Удалить"
+                HorizontalAlignment="Right"
+                Click="btnDelete_Click"
+                Grid.Row="4"/>
+
         <Button x:Name="btnSave" 
                 Content="Сохранить"
+                HorizontalAlignment="Center"
                 Click="btnSave_Click"
                 Grid.Column="1" Grid.Row="4"/>
                 

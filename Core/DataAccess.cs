@@ -53,5 +53,11 @@ namespace Core
             vacancy.IsClosed = true;
             SaveVacancy(vacancy);
         }
+
+        public static void DeleteEmployer(Employer employer)
+        {
+            EmploymentAgencyEntities.GetContext().Employers.Remove(employer);
+            EmploymentAgencyEntities.GetContext().SaveChanges();
+        }
     }
 }
