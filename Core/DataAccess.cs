@@ -13,7 +13,7 @@ namespace Core
 
         public static List<Employer> GetEmployers() => EmploymentAgencyEntities.GetContext().Employers.ToList();
         public static List<ActivityType> GetActivityTypes() => EmploymentAgencyEntities.GetContext().ActivityTypes.ToList();
-        public static List<Vacancy> GetVacancies() => EmploymentAgencyEntities.GetContext().Vacancies.ToList();
+        public static List<Vacancy> GetVacancies() => EmploymentAgencyEntities.GetContext().Vacancies.Where(x => !x.IsClosed).ToList();
         public static List<Deal> GetDeals() => EmploymentAgencyEntities.GetContext().Deals.ToList();
         public static List<Agent> GetAgents() => EmploymentAgencyEntities.GetContext().Agents.ToList();
         public static List<Applicant> GetApplicants() => EmploymentAgencyEntities.GetContext().Applicants.ToList();
@@ -46,6 +46,12 @@ namespace Core
                 EmploymentAgencyEntities.GetContext().Deals.Add(deal);
             EmploymentAgencyEntities.GetContext().SaveChanges();
             RefreshListsEvent?.Invoke();
+        }
+
+        public static void CloseVacancy(Vacancy vacancy)
+        {
+            vacancy.IsClosed = true;
+            SaveVacancy(vacancy);
         }
     }
 }

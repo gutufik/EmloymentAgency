@@ -31,6 +31,9 @@ namespace EmloymentAgency
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {
             tbPageTitle.Text = (mainFrame.Content as Page).Title;
+
+            btnGoBack.IsEnabled = mainFrame.NavigationService.CanGoBack;
+            btnGoForward.IsEnabled = mainFrame.NavigationService.CanGoForward;
         }
 
         private void btnVacancies_Click(object sender, RoutedEventArgs e)
@@ -51,6 +54,16 @@ namespace EmloymentAgency
         private void btnDeals_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.NavigationService.Navigate(new DealsPage());
+        }
+
+        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.NavigationService.GoBack();
+        }
+
+        private void btnGoForward_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.NavigationService.GoForward();
         }
     }
 }

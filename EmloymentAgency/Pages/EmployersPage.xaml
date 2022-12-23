@@ -13,7 +13,15 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <TextBox x:Name="tbSearch" VerticalAlignment="Center" TextChanged="tbSearch_TextChanged"/>
+            <ComboBox x:Name="cbActivityType" ItemsSource="{Binding ActivityTypes}" 
+                      SelectedIndex="0" Grid.Column="2" SelectionChanged="cbActivityType_SelectionChanged"
+                      DisplayMemberPath="Name"/>
+            <Button x:Name="btnAdd" Content="Добавить" 
+                    HorizontalAlignment="Right"
+                    Click="btnAdd_Click"/>
+        </StackPanel>
 
         <ListView x:Name="lvEmployers" ItemsSource="{Binding Employers}" 
                   SelectionChanged="lvEmployers_SelectionChanged"

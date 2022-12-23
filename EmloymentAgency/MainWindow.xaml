@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:EmloymentAgency"
         mc:Ignorable="d"
-        Height="450" Width="800"
-        Title="MainWindow" MinHeight="450" MinWidth="800">
+        Height="650" Width="900"
+        Title="Моя Работа" MinHeight="650" MinWidth="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80px"/>
@@ -21,6 +22,20 @@
             <Button x:Name="btnApplicants" Content="Соискатели" Click="btnApplicants_Click"/>
             <Button x:Name="btnDeals" Content="Сделки" Click="btnDeals_Click"/>
         </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnGoBack" 
+                    IsEnabled="False"
+                    Click="btnGoBack_Click">
+                <materialDesign:PackIcon Kind="StepBackward" />
+            </Button>
+            <Button x:Name="btnGoForward"
+                    IsEnabled="False"
+                    Click="btnGoForward_Click">
+                <materialDesign:PackIcon Kind="StepForward" />
+            </Button>
+        </StackPanel>
+        
+        
         <TextBlock x:Name="tbPageTitle" FontSize="30" 
                    HorizontalAlignment="Center"
                    Grid.Row="1"/>

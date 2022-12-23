@@ -28,6 +28,11 @@ namespace EmloymentAgency.Pages
             InitializeComponent();
             ActivityTypes = DataAccess.GetActivityTypes();
             Employer = employer;
+            if (Employer.Id == 0)
+                Title = "НовЫй раболтодатель";
+            else
+                Title = $"Работодатель №{Employer.Name}";
+
             DataContext = this;
         }
 

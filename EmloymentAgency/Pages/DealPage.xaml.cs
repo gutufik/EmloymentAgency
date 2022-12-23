@@ -35,6 +35,11 @@ namespace EmloymentAgency.Pages
             Vacancies = DataAccess.GetVacancies();
             Agents = DataAccess.GetAgents();
             Employers = DataAccess.GetEmployers();
+            if (Deal.Id == 0)
+                Title = "Новая сделка";
+            else
+                Title = $"Вакансия №{Deal.Id}";
+
 
             DataContext = this;
         }

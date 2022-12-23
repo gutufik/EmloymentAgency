@@ -48,5 +48,15 @@ namespace EmloymentAgency.Pages
             if (employer != null)
                 NavigationService.Navigate(new EmployerPage(employer));
         }
+
+        private void cbActivityType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

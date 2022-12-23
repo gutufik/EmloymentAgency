@@ -86,12 +86,10 @@
     <Compile Include="Qualification.cs">
       <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Vacancy.cs">
       <DependentUpon>EmploymentAgencyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="VacancyPartial.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

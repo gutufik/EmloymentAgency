@@ -13,6 +13,20 @@
             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                 <Setter Property="Margin" Value="10"/>
             </Style>
+            <Style TargetType="ListViewItem">
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignOutlinedTextBox}">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignFilledComboBox}">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            <Style TargetType="ListView" BasedOn="{StaticResource MaterialDesignListView}">
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

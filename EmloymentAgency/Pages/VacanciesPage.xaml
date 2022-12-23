@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:EmloymentAgency.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -20,22 +21,35 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged"/>
+        <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged"
+                 materialDesign:HintAssist.HelperText="Поиск"
+                 materialDesign:HintAssist.HelperTextFontSize="10"
+                 VerticalAlignment="Center"/>
         <ComboBox x:Name="cbEmployer" ItemsSource="{Binding Employers}" 
+                  materialDesign:HintAssist.HelperText="Работодатель"
+                  materialDesign:HintAssist.HelperTextFontSize="10"
+                  VerticalAlignment="Center"
                   SelectedIndex="0" Grid.Column="1" SelectionChanged="cbEmployer_SelectionChanged"
                   DisplayMemberPath="Name"/>
         <ComboBox x:Name="cbActivityType" ItemsSource="{Binding ActivityTypes}" 
+                  materialDesign:HintAssist.HelperText="Вид деятельности"
+                 materialDesign:HintAssist.HelperTextFontSize="10"
+                  VerticalAlignment="Center"
                   SelectedIndex="0" Grid.Column="2" SelectionChanged="cbActivityType_SelectionChanged"
                   DisplayMemberPath="Name"/>
-        <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click" Grid.Column="3"/>
+        <Button x:Name="btnAdd" Click="btnAdd_Click" HorizontalAlignment="Right" Grid.Column="3">
+            <materialDesign:PackIcon Kind="PlusBold" Width="20" Height="20"/>
+        </Button>
 
         <ListView x:Name="lvVacancies" ItemsSource="{Binding Vacancies}" 
                   SelectionChanged="lvVacancies_SelectionChanged"
+                  HorizontalContentAlignment="Stretch"
                   Grid.Row="1" Grid.ColumnSpan="4">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Employer.Name}"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Работодатель" DisplayMemberBinding="{Binding Employer.Name}"/>
+                    <GridViewColumn Header="Вакансия" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Зарплата" DisplayMemberBinding="{Binding Payment}"/>
                 </GridView>
             </ListView.View>
         </ListView>

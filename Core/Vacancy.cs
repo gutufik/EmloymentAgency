@@ -26,6 +26,9 @@ namespace Core
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Closed { get; set; }
+        public Nullable<int> MinPayment { get; set; }
+        public Nullable<int> MaxPayment { get; set; }
+        public bool IsClosed { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Deal> Deals { get; set; }

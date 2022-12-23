@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,10 @@ namespace EmloymentAgency.Pages
             Vacancy = vacancy;
             Employers = DataAccess.GetEmployers();
             Qualifications = DataAccess.GetQualifications();
+            if (Vacancy.Id == 0)
+                Title = "Новая вакансия";
+            else
+                Title = $"Вакансия №{Vacancy.Id}";
 
             DataContext = this;
         }
@@ -38,6 +43,12 @@ namespace EmloymentAgency.Pages
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.SaveVacancy(Vacancy);
+            NavigationService.GoBack();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            DataAccess.CloseVacancy(Vacancy);
             NavigationService.GoBack();
         }
     }
