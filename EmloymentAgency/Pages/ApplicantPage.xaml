@@ -7,6 +7,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Соискатель">
+    <Page.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignBody1TextBlock}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,12 +21,12 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Фамилия"/>
@@ -47,11 +53,16 @@
                  AcceptsReturn="True"
                  Grid.Column="1" Grid.Row="4"/>
 
+        <Button x:Name="btnDelete" 
+                Content="Удалить"
+                Click="btnDelete_Click"
+                HorizontalAlignment="Right"
+                Grid.Column="0" Grid.Row="5"/>
+
         <Button x:Name="btnSave" 
                 Content="Сохранить"
                 Click="btnSave_Click"
+                HorizontalAlignment="Center"
                 Grid.Column="1" Grid.Row="5"/>
-
-
     </Grid>
 </Page>

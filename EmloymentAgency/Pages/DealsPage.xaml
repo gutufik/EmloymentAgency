@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EmloymentAgency.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Сделки">
@@ -13,11 +14,29 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DatePicker x:Name="dpCompilationDate"
+                    Language="ru"
+                    Margin="10"
+                    materialDesign:HintAssist.HelperText="Дата "
+                   SelectedDateChanged="dpCompilationDate_SelectedDateChanged"/>
+
+        <Button x:Name="btnAdd" 
+                Grid.Column="3"
+                HorizontalAlignment="Right"
+                Click="btnAdd_Click">
+            <materialDesign:PackIcon Kind="PlusBold" Width="20" Height="20"/>
+        </Button>
 
         <ListView x:Name="lvDeals" ItemsSource="{Binding Deals}" 
                   SelectionChanged="lvDeals_SelectionChanged"
-                  Grid.Row="1" Grid.ColumnSpan="3">
+                  Grid.Row="1" Grid.ColumnSpan="4">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Соискатель">

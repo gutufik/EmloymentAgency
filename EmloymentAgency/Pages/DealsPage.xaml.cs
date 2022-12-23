@@ -48,5 +48,18 @@ namespace EmloymentAgency.Pages
             if (deal != null) 
                 NavigationService.Navigate(new DealPage(deal));
         }
+
+        private void dpCompilationDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(dpCompilationDate.SelectedDate != null)
+            {
+                lvDeals.ItemsSource = Deals.FindAll(x => x.CompilationDate== dpCompilationDate.SelectedDate);
+            }
+            else
+            {
+                lvDeals.ItemsSource = Deals;
+            }
+            lvDeals.Items.Refresh();
+        }
     }
 }

@@ -30,7 +30,10 @@ namespace EmloymentAgency.Pages
             Qualifications = DataAccess.GetQualifications();
 
             if (applicant.Id == 0)
+            {
                 Title = "Новый соискатель";
+                btnDelete.Visibility = Visibility.Collapsed;
+            }
             else
                 Title =  $"Соискатель №{applicant.Id}";
 
@@ -41,6 +44,15 @@ namespace EmloymentAgency.Pages
         {
             DataAccess.SaveApplicant(Applicant);
             NavigationService.GoBack();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Выбранный соискатель будет удален. Продолжить?", "Предупреждение", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
+            {
+                DataAccess.DeleteApplicant(Applicant);
+                NavigationService.GoBack();
+            }
         }
     }
 }

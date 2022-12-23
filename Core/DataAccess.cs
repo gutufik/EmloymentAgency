@@ -58,6 +58,21 @@ namespace Core
         {
             EmploymentAgencyEntities.GetContext().Employers.Remove(employer);
             EmploymentAgencyEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
+        }
+
+        public static void DeleteApplicant(Applicant applicant)
+        {
+            EmploymentAgencyEntities.GetContext().Applicants.Remove(applicant);
+            EmploymentAgencyEntities.GetContext().SaveChanges(); 
+            RefreshListsEvent?.Invoke();
+        }
+
+        public static void DeleteDeal(Deal deal)
+        {
+            EmploymentAgencyEntities.GetContext().Deals.Remove(deal);
+            EmploymentAgencyEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
         }
     }
 }

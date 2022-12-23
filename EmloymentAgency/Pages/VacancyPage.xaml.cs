@@ -33,7 +33,10 @@ namespace EmloymentAgency.Pages
             Employers = DataAccess.GetEmployers();
             Qualifications = DataAccess.GetQualifications();
             if (Vacancy.Id == 0)
+            {
                 Title = "Новая вакансия";
+                btnClose.Visibility = Visibility.Collapsed;
+            }
             else
                 Title = $"Вакансия №{Vacancy.Id}";
 
@@ -42,8 +45,25 @@ namespace EmloymentAgency.Pages
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.SaveVacancy(Vacancy);
-            NavigationService.GoBack();
+            var stringBuilder = new StringBuilder();
+            try
+            {
+                if (Vacancy.MaxPayment < Vacancy.MinPayment)
+                    stringBuilder.AppendLine("Максисальная оплата не может быть меньше минимальной");
+                if (Vacancy.MaxPayment < 0 || Vacancy.MinPayment <0)
+                    stringBuilder.AppendLine("Оплата не может быть отрицательной");
+
+                if (stringBuilder.Length > 0)
+                    throw new Exception();
+
+                DataAccess.SaveVacancy(Vacancy);
+                NavigationService.GoBack();
+
+            }
+            catch
+            {
+                MessageBox.Show(stringBuilder.ToString(), "Ошибка");
+            }
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

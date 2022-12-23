@@ -29,7 +29,10 @@ namespace EmloymentAgency.Pages
             ActivityTypes = DataAccess.GetActivityTypes();
             Employer = employer;
             if (Employer.Id == 0)
+            {
                 Title = "Новый работодатель";
+                btnDelete.Visibility = Visibility.Collapsed;
+            }
             else
                 Title = $"Работодатель {Employer.Name}";
 

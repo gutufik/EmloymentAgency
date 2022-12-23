@@ -22,10 +22,16 @@ namespace EmloymentAgency.Pages
     public partial class ApplicantsPage : Page
     {
         public List<Applicant> Applicants { get; set; }
+        public List<Applicant> ApplicantsForFilters { get; set; }
+        public List<Qualification> Qualifications { get; set; }
         public ApplicantsPage()
         {
             InitializeComponent();
             Applicants = DataAccess.GetApplicants();
+            ApplicantsForFilters = Applicants.ToList();
+            Qualifications = DataAccess.GetQualifications();
+            Qualifications.Insert(0, new Qualification { Name = "Все" });
+
             DataAccess.RefreshListsEvent += DataAccess_RefreshListsEvent;
             DataContext = this;
         }
@@ -47,6 +53,35 @@ namespace EmloymentAgency.Pages
             var applicant = (Applicant)lvApplicants.SelectedItem;
             if (applicant != null)
                 NavigationService.Navigate(new ApplicantPage(applicant));
+        }
+
+        private void ApplyFilters()
+        {
+            if (cbQualification.SelectedItem != null)
+            {
+                var qualification = cbQualification.SelectedItem as Qualification;
+                var searchText = tbSearch.Text.ToLower();
+
+                ApplicantsForFilters = Applicants.FindAll(x => x.FirstName.ToLower().Contains(searchText) ||
+                    x.LastName.ToLower().Contains(searchText) ||
+                    x.Patronymic.ToLower().Contains(searchText));
+
+                if (qualification.Name != "Все")
+                    ApplicantsForFilters = ApplicantsForFilters.FindAll(x => x.Qualification == qualification);
+
+                lvApplicants.ItemsSource = ApplicantsForFilters;
+                lvApplicants.Items.Refresh();
+            }
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ApplyFilters();
+        }
+
+        private void cbQualification_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ApplyFilters();
         }
     }
 }

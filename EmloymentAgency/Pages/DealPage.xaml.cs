@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Core;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace EmloymentAgency.Pages
 {
@@ -36,9 +38,18 @@ namespace EmloymentAgency.Pages
             Agents = DataAccess.GetAgents();
             Employers = DataAccess.GetEmployers();
             if (Deal.Id == 0)
+            {
+                Deal.CompilationDate = DateTime.Now;
+                Deal.Comission = 3000;
                 Title = "Новая сделка";
+                btnPrint.Visibility = Visibility.Collapsed;
+                btnDelete.Visibility = Visibility.Collapsed;
+            }
             else
-                Title = $"Вакансия №{Deal.Id}";
+            {
+                Title = $"Сделка №{Deal.Id}";
+                IsEnabled = false;
+            }
 
 
             DataContext = this;
@@ -46,13 +57,41 @@ namespace EmloymentAgency.Pages
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.SaveDeal(Deal);
-            NavigationService.GoBack();
+            var stringBuilder = new StringBuilder();
+            try
+            {
+                if (Deal.PaymentDate < Deal.CompilationDate)
+                    stringBuilder.AppendLine("Да оплаты не может быть меньше даты формирования");
+
+                if (stringBuilder.Length > 0)
+                    throw new Exception();
+
+                DataAccess.SaveDeal(Deal);
+                NavigationService.GoBack();
+            }
+            catch
+            {
+                MessageBox.Show(stringBuilder.ToString(), "Ошибка");
+            }
         }
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
+            ReportService.ExportToWord(Deal);
+        }
 
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Выбранная сделка будет удален. Продолжить?", "Предупреждение", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
+            {
+                DataAccess.DeleteDeal(Deal);
+                NavigationService.GoBack();
+            }
+        }
+
+        private void cbVacancy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cbEmployer.SelectedItem = (cbVacancy.SelectedItem as Vacancy).Employer;
         }
     }
 }

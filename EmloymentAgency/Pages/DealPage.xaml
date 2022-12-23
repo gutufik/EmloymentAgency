@@ -4,9 +4,18 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EmloymentAgency.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="Сделка">
+    <Page.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignBody1TextBlock}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="20"/>
+
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,14 +24,14 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Соискатель"/>
@@ -49,7 +58,7 @@
         <ComboBox x:Name="cbVacancy" 
                   ItemsSource="{Binding Vacancies}"
                   SelectedItem="{Binding Deal.Vacancy}"
-                  
+                  SelectionChanged="cbVacancy_SelectionChanged"
                   Grid.Column="1" Grid.Row="1">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -63,6 +72,8 @@
         </ComboBox>
         <ComboBox x:Name="cbEmployer" 
                   ItemsSource="{Binding Employers}"
+                  IsReadOnly="True"
+                  IsEnabled="False"
                   DisplayMemberPath="Name"
                   Grid.Column="1" Grid.Row="2"/>
 
@@ -89,17 +100,28 @@
                     SelectedDate="{Binding Deal.PaymentDate}"
                     Grid.Column="1" Grid.Row="5"/>
         <TextBox x:Name="tbComission"
+                 IsEnabled="False"
                  Text="{Binding Deal.Comission}"
                  Grid.Column="1" Grid.Row="6"/>
 
         <Button x:Name="btnPrint" 
-                Content="Печать"
-                Click="btnPrint_Click"
-                Grid.Column="0" Grid.Row="7"/>
+                    HorizontalAlignment="Center"
+                    Click="btnPrint_Click"
+                    Grid.Column="0" 
+                    Grid.Row="7">
+            <materialDesign:PackIcon Kind="Printer" />
+        </Button>
+        
+        <Button x:Name="btnDelete"
+                Content="Удалить"
+                HorizontalAlignment="Right"
+                Click="btnDelete_Click"
+                Grid.Row="7"/>
 
         <Button x:Name="btnSave" 
                 Content="Сохранить"
                 Click="btnSave_Click"
+                HorizontalAlignment="Center"
                 Grid.Column="1" Grid.Row="7"/>
 
     </Grid>

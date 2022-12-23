@@ -69,5 +69,15 @@ namespace EmloymentAgency.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Template {
+            get {
+                object obj = ResourceManager.GetObject("Template", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
